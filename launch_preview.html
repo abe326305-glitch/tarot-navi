@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スマホ実機で開く ｜ 大人の本格タロット占いナビ</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      background: #07090b;
+      color: #f5f4f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .card {
+      background: #0c2327;
+      border: 1.5px solid #d4af37;
+      border-radius: 18px;
+      padding: 30px 24px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.85);
+    }
+    h1 {
+      color: #faeab1;
+      font-size: 1.35rem;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    p {
+      color: #9da4a8;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    #qrcode {
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+      background: #fff;
+      border-radius: 12px;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 20px;
+      box-sizing: border-box;
+    }
+    .url-box {
+      background: rgba(0,0,0,0.5);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px dashed rgba(212, 175, 55, 0.4);
+      font-family: monospace;
+      font-size: 1rem;
+      color: #faeab1;
+      word-break: break-all;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #134e4a 0%, #0f766e 100%);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
+      font-size: 0.95rem;
+      border: 1px solid #d4af37;
+    }
+    .note {
+      font-size: 0.78rem;
+      color: #647076;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>📱 スマホ実機で開く</h1>
+    <p>同じWi-Fiに接続したスマートフォンのカメラで、下のQRコードを読み取ってください。<br>（声で語りかける音声相談やカードのフリップをお手元で体験できます）</p>
+    
+    <div id="qrcode"></div>
+    <div class="url-box">http://192.168.10.106:8082/index.html</div>
+    
+    <a href="http://192.168.10.106:8082/index.html" target="_blank" class="btn">💻 このPCブラウザで直接開く</a>
+    
+    <div class="note">
+      ※スマートフォンとPCが同じWi-Fiネットワークに接続されている必要があります。<br>
+      ※終了するには、黒いコマンド画面を閉じてください。
+    </div>
+  </div>
+
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "http://192.168.10.106:8082/index.html",
+      width: 188,
+      height: 188,
+      colorDark : "#07090b",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.M
+    });
+  </script>
+</body>
+</html>
