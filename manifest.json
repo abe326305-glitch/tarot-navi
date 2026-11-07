@@ -1,0 +1,27 @@
+{
+  "name": "大人の本格タロット占いナビ",
+  "short_name": "タロットナビ",
+  "description": "スマホで引ける大人の本格タロット占いナビ 3Dサロン演出・ユング心理学セルフコーチング＆AI深掘り相談",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07090b",
+  "theme_color": "#0c2327",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
