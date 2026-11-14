@@ -400,11 +400,29 @@
       grid-template-columns: repeat(3, 1fr);
       max-width: 380px;
     }
-    .cards-spread-grid.spread-choice,
-    .cards-spread-grid.spread-celtic {
+    .cards-spread-grid.spread-choice {
       grid-template-columns: repeat(3, 1fr);
       max-width: 380px;
     }
+    .cards-spread-grid.spread-celtic {
+      grid-template-columns: repeat(5, 1fr);
+      max-width: 540px;
+      gap: 10px 6px;
+      align-items: center;
+    }
+    .cards-spread-grid.spread-celtic .tarot-card-item {
+      max-width: 96px;
+    }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(1) { grid-column: 2; grid-row: 3; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(2) { grid-column: 3; grid-row: 3; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(3) { grid-column: 2 / 4; grid-row: 2; justify-self: center; width: 48%; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(4) { grid-column: 2 / 4; grid-row: 4; justify-self: center; width: 48%; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(5) { grid-column: 1; grid-row: 3; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(6) { grid-column: 4; grid-row: 3; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(7) { grid-column: 5; grid-row: 4; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(8) { grid-column: 5; grid-row: 3; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(9) { grid-column: 5; grid-row: 2; }
+    .cards-spread-grid.spread-celtic .tarot-card-item:nth-child(10) { grid-column: 5; grid-row: 1; }
 
     /* 単体タロットカード（全カード完全同一プロポーション保証） */
     .tarot-card-item {
@@ -1278,7 +1296,7 @@
         <button class="spread-tab-btn active" data-spread="single">🌟 ワンオラクル<br>(1枚・今日の一言)</button>
         <button class="spread-tab-btn" data-spread="three">🔮 スリーカード<br>(3枚・過去現未)</button>
         <button class="spread-tab-btn" data-spread="choice">⚖️ 二者択一<br>(5枚・AかBか)</button>
-        <button class="spread-tab-btn" data-spread="celtic">🏛️ ケルト十字<br>(6枚・深層心理)</button>
+        <button class="spread-tab-btn" data-spread="celtic">🏛️ ケルト十字<br>(10枚・深層心理)</button>
       </div>
     <!-- デッキ構成＆原画図鑑ボタン -->
       <div class="deck-mode-bar">
@@ -2973,7 +2991,7 @@
       single: { count: 1, labels: ["現在・直感の答え"], title: "ワンオラクル（1枚引き鑑定）" },
       three: { count: 3, labels: ["1. 過去・根源", "2. 現在・状況", "3. 近い未来・可能性"], title: "スリーカード（過去・現在・未来）" },
       choice: { count: 5, labels: ["1. 現状の土台", "2. 選択肢Aのプロセス", "3. 選択肢Aの結末", "4. 選択肢Bのプロセス", "5. 選択肢Bの結末"], title: "二者択一スプレッド（二つの道の比較）" },
-      celtic: { count: 6, labels: ["1. 現在の自分", "2. 試練・障害", "3. 潜在意識の本音", "4. 過去の要因", "5. 近未来の兆候", "6. 最終的アドバイス"], title: "大人のケルト十字リーディング" }
+      celtic: { count: 10, labels: ["1. 現状", "2. 障害・試練", "3. 顕在意識", "4. 潜在意識", "5. 過去", "6. 近い未来", "7. あなたの立場", "8. 周囲の環境", "9. 希望と恐れ", "10. 最終結果"], title: "大人のケルト十字リーディング（10枚）" }
     };
 
     function dealCards() {
@@ -3573,12 +3591,16 @@ ${dilemma}
         { x: 1.50, z: -1.15, rotY: 0.06, scale: 0.82 }    // 5. 選択肢B結末（最奥・小）
       ],
       celtic: [
-        { x: -0.20, z: 0.12, rotY: -0.05, scale: 0.96 },                    // 1. 現在の自分（中央：絵柄が隠れないよう配置）
-        { x: 0.25, z: 0.05, rotY: 1.15, yOffset: 0.038, scale: 0.94 },    // 2. 試練・障害（原典の十字交差を表現しつつ下のカードも見える絶妙オフセット）
-        { x: 0, z: 1.28, rotY: 0, scale: 1.06 },                            // 3. 潜在意識の本音（最手前・一番大きく）
-        { x: -1.80, z: -0.28, rotY: -0.08, scale: 0.88 },                   // 4. 過去の要因（左奥・小さめ）
-        { x: 1.80, z: -0.28, rotY: 0.08, scale: 0.88 },                    // 5. 近未来の兆候（右奥・小さめ）
-        { x: 0, z: -1.38, rotY: 0, scale: 0.78 }                            // 6. 最終的アドバイス（最奥・小さく天啓の頂点）
+        { x: -1.15, z: 0.15, rotY: -0.04, scale: 0.74 },                    // 1. 現状（中心）
+        { x: -0.95, z: 0.10, rotY: 1.15, yOffset: 0.038, scale: 0.72 },     // 2. 障害・試練（交差）
+        { x: -1.05, z: -1.45, rotY: 0, scale: 0.68 },                       // 3. 顕在意識（頭上）
+        { x: -1.05, z: 1.75, rotY: 0, scale: 0.80 },                        // 4. 潜在意識（足元）
+        { x: -2.65, z: 0.15, rotY: -0.06, scale: 0.72 },                    // 5. 過去（左側）
+        { x: 0.55, z: 0.15, rotY: 0.04, scale: 0.72 },                      // 6. 近い未来（右側）
+        { x: 2.35, z: 2.05, rotY: 0.05, scale: 0.66 },                      // 7. あなたの立場（右列一番下）
+        { x: 2.35, z: 0.65, rotY: 0.05, scale: 0.62 },                      // 8. 周囲の環境（右列下から2番目）
+        { x: 2.35, z: -0.75, rotY: 0.05, scale: 0.58 },                     // 9. 希望と恐れ（右列下から3番目）
+        { x: 2.35, z: -2.15, rotY: 0.05, scale: 0.55 }                      // 10. 最終結果（右列一番上）
       ]
     };
 
